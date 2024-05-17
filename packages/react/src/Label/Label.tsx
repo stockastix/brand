@@ -81,6 +81,7 @@ const _Label = forwardRef<HTMLSpanElement, LabelProps>(
         {LeadingVisual && (
           <span className={styles['Label__leading-visual']} data-testid={testIds.leadingVisual}>
             {typeof LeadingVisual === 'function' ? (
+              // @ts-ignore
               <LeadingVisual className={clsx(styles['Label__icon-visual'])} aria-hidden />
             ) : (
               React.isValidElement(LeadingVisual) &&

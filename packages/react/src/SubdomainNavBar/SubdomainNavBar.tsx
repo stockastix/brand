@@ -403,12 +403,14 @@ const _SearchInternal = (
 
   const handleClose = useCallback(
     (event = null) => {
+      // @ts-ignore
       if (handlerFn) handlerFn(event)
       setActiveDescendant(-1)
     },
     [handlerFn],
   )
 
+  // @ts-ignore
   useOnClickOutside(dialogRef, handleClose)
   useKeyboardEscape(() => {
     // Close the dialog if combobox is already collapsed
@@ -526,6 +528,7 @@ const _SearchInternal = (
             <button
               aria-label="Close"
               className={clsx(styles['SubdomainNavBar-menu-button'], styles['SubdomainNavBar-menu-button--close'])}
+              // @ts-ignore
               onClick={handleClose}
             >
               <XIcon size={24} />

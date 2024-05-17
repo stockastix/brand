@@ -108,6 +108,7 @@ const _TextInput = (
       {LeadingVisual && !leadingText && (
         <span className={clsx(styles['TextInput-leading-visual'], styles[`TextInput-leading-visual--${size}`])}>
           {typeof LeadingVisual === 'function' ? (
+            // @ts-ignore
             <LeadingVisual
               className={clsx(
                 styles['TextInput-leading-visual-icon'],
@@ -150,6 +151,7 @@ const _TextInput = (
       {TrailingVisual && !trailingText && (
         <span className={clsx(styles['TextInput-trailing-visual'], styles[`TextInput-trailing-visual--${size}`])}>
           {typeof TrailingVisual === 'function' ? (
+            // @ts-ignore
             <TrailingVisual
               className={clsx(
                 styles['TextInput-trailing-visual-icon'],

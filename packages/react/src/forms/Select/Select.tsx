@@ -59,6 +59,7 @@ const _SelectRoot = (
           className,
         )}
         disabled={disabled}
+        // @ts-ignore
         placeholder={placeholder}
         ref={ref}
         {...rest}

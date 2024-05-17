@@ -1,28 +1,14 @@
 {
-  "name": "@primer/brand-storybook",
-  "version": "0.34.0",
+  "name": "@stockastix/brand-storybook",
+  "version": "0.0.1",
   "private": true,
-  "description": "Primer Brand Storybook",
-  "keywords": [
-    "primer",
-    "react",
-    "components",
-    "library",
-    "design-system"
-  ],
-  "homepage": "https://primer.style/brand",
-  "bugs": {
-    "url": "https://github.com/primer/brand/issues"
-  },
+  "description": "Brand Storybook",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/primer/brand.git"
+    "url": "git+https://github.com/stockastix/brand.git"
   },
   "license": "MIT",
-  "author": "GitHub, Inc.",
   "scripts": {
-    "build:preview": "npm run clean && scripts/build-storybook preview",
-    "build:prod": "npm run clean && scripts/build-storybook",
     "clean": "rm -rf out",
     "start": "storybook dev -p 6006  -s ../static",
     "start:axe": "storybook dev -p 6006 --no-version-updates"

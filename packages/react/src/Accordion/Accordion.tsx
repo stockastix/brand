@@ -65,7 +65,7 @@ export const AccordionRoot = forwardRef<HTMLDetailsElement, AccordionRootProps>(
         ref={detailsRef}
       >
         {HeadingChild}
-        {AccordionContentChild}
+        {/* AccordionContentChild */}
       </details>
     )
   },
