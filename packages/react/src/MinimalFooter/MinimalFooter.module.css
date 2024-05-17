@@ -51,6 +51,8 @@
 .Footer__logomarks {
   border-top: var(--brand-borderWidth-thin) solid var(--brand-color-border-default);
   border-bottom: var(--brand-borderWidth-thin) solid var(--brand-color-border-default);
+  
+  color: var(--brand-color-text-subtle);
 }
 
 .Footer__logomarks,

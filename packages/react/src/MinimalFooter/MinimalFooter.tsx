@@ -1,8 +1,7 @@
 import React, {PropsWithChildren} from 'react'
 import clsx from 'clsx'
-import {LogoGithubIcon} from '@primer/octicons-react'
+import {Stack, Text, useTheme} from '@primer/react-brand'
 
-import {ColorModesEnum, Stack, Text, useTheme} from '../'
 import {BaseProps} from '../component-helpers'
 
 /**
@@ -30,16 +29,20 @@ type SocialLinks = (typeof MinimalFooterSocialLinks)[number]
 
 export type MinimalFooterProps = {
   /**
+   * Project/website name.
+   */
+  name: string
+  /**
    * An array of social links to be displayed in the footer.
    */
   socialLinks?: SocialLinks[] | false
   /**
-   * The href for the GitHub logo.
+   * The href for the project logo.
    */
   logoHref?: string
   /**
    * The copyright statement to be displayed in the footer.
-   * If not provided, the copyright statement will be the default GitHub copyright statement.
+   * If not provided, the copyright statement will be the default copyright statement.
    */
   copyrightStatement?: string | React.ReactElement
 } & BaseProps<HTMLElement>
@@ -47,8 +50,9 @@ export type MinimalFooterProps = {
 function Root({
   className,
   children,
+  name,
   copyrightStatement,
-  logoHref = 'https://github.com',
+  logoHref,
   socialLinks,
   ...rest
 }: PropsWithChildren<MinimalFooterProps>) {
@@ -86,7 +90,7 @@ function Root({
   return (
     <footer className={clsx(styles.Footer, className)} {...rest}>
       {footerFootnoteChild()}
-      <SocialLogomarks socialLinks={socialLinks} logoHref={logoHref} />
+      <SocialLogomarks name={name} socialLinks={socialLinks} logoHref={logoHref} />
       <section>
         <div className={styles['Footer__legal-and-links']}>
           <div className={styles['Footer__container']}>
@@ -112,7 +116,7 @@ function Root({
                 <>{LinkChildren}</>
               </Stack>
               <Text as="p" size="200" variant="muted" className={styles['Footer__copyright']}>
-                {copyrightStatement ? copyrightStatement : `\u00A9 ${currentYear} GitHub. All rights reserved.`}
+                {copyrightStatement ? copyrightStatement : `\u00A9 ${currentYear} ${name}. All rights reserved.`}
               </Text>
             </Stack>
           </div>
@@ -150,18 +154,19 @@ function Footnotes({children, className}: PropsWithChildren<FootnoteProps>) {
 }
 
 type SocialLogomarksProps = {
+  name: string
   socialLinks?: SocialLinks[] | false
   logoHref?: string
 }
 
-function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
+function SocialLogomarks({name, socialLinks, logoHref}: SocialLogomarksProps) {
   const {colorMode} = useTheme()
 
   const socialLinkData = [
     {
       name: 'x',
       fullName: 'X',
-      url: 'https://x.com/github',
+      url: `https://x.com/${name.toLocaleLowerCase()}`,
       icon: 'https://github.githubassets.com/images/modules/site/icons/footer/x.svg',
       iconWidth: 20,
       iconHeight: 16,
@@ -169,7 +174,7 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
     {
       name: 'github',
       fullName: 'GitHub',
-      url: 'https://github.com/github',
+      url: `https://github.com/${name.toLocaleLowerCase()}`,
       icon: 'https://github.githubassets.com/images/modules/site/icons/footer/github-mark.svg',
       iconWidth: 20,
       iconHeight: 20,
@@ -177,7 +182,7 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
     {
       name: 'linkedin',
       fullName: 'LinkedIn',
-      url: 'https://www.linkedin.com/company/github',
+      url: `https://www.linkedin.com/company/${name.toLocaleLowerCase()}`,
       icon: 'https://github.githubassets.com/images/modules/site/icons/footer/linkedin.svg',
       iconWidth: 19,
       iconHeight: 18,
@@ -185,7 +190,7 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
     {
       name: 'youtube',
       fullName: 'YouTube',
-      url: 'https://www.youtube.com/github',
+      url: `https://www.youtube.com/${name.toLocaleLowerCase()}`,
       icon: 'https://github.githubassets.com/images/modules/site/icons/footer/youtube.svg',
       iconWidth: 23,
       iconHeight: 16,
@@ -193,7 +198,7 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
     {
       name: 'facebook',
       fullName: 'Facebook',
-      url: 'https://www.facebook.com/GitHub',
+      url: `https://www.facebook.com/${name.toLocaleLowerCase()}`,
       icon: 'https://github.githubassets.com/images/modules/site/icons/footer/facebook.svg',
       iconWidth: 18,
       iconHeight: 18,
@@ -201,7 +206,7 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
     {
       name: 'twitch',
       fullName: 'Twitch',
-      url: 'https://www.twitch.tv/github',
+      url: `https://www.twitch.tv/${name.toLocaleLowerCase()}`,
       icon: 'https://github.githubassets.com/images/modules/site/icons/footer/twitch.svg',
       iconWidth: 18,
       iconHeight: 18,
@@ -209,7 +214,7 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
     {
       name: 'tiktok',
       fullName: 'TikTok',
-      url: 'https://www.tiktok.com/@github',
+      url: `https://www.tiktok.com/@${name.toLocaleLowerCase()}`,
       icon: 'https://github.githubassets.com/images/modules/site/icons/footer/tiktok.svg',
       iconWidth: 18,
       iconHeight: 18,
@@ -217,7 +222,7 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
     {
       name: 'instagram',
       fullName: 'Instagram',
-      url: 'https://www.instagram.com/github/',
+      url: `https://www.instagram.com/${name.toLocaleLowerCase()}/`,
       icon: 'https://github.githubassets.com/images/modules/site/icons/footer/instagram.svg',
       iconWidth: 24,
       iconHeight: 24,
@@ -241,7 +246,9 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
             decoding="async"
             alt=""
           />
-          <span className="visually-hidden">GitHub on {link.fullName}</span>
+          <span className="visually-hidden">
+            {name} on {link.fullName}
+          </span>
         </a>
       </li>
     )
@@ -261,9 +268,12 @@ function SocialLogomarks({socialLinks, logoHref}: SocialLogomarksProps) {
             <a
               href={logoHref}
               data-analytics-event='{"category":"Footer","action":"go to home","label":"text:home"}'
-              aria-label="GitHub"
+              aria-label={name}
+              style={{textDecoration: 'none'}}
             >
-              <LogoGithubIcon fill={colorMode === ColorModesEnum.DARK ? 'white' : 'black'} size="medium" />
+              <Text size="600" weight="heavy" variant="muted">
+                {name}
+              </Text>
             </a>
           </div>
           {socialLinks !== false ? (
@@ -307,7 +317,7 @@ const Link = <C extends React.ElementType = 'a'>({as, children, ...rest}: PropsW
 }
 
 /**
- * Use MinimalFooter to render a global footer on all GitHub pages.
+ * Use MinimalFooter to render a global footer on all pages.
  * @see https://primer.style/brand/components/MinimalFooter
  */
 export const MinimalFooter = Object.assign(Root, {
