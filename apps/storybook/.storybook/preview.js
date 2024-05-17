@@ -1,8 +1,7 @@
-import {ThemeProvider} from '../../../packages/react/src'
+import {ThemeProvider} from '@primer/react-brand'
 import styles from './preview.module.css'
-import '../../../packages/react/src/css/stylesheets'
-import '../../../packages/react/src/css/utilities.css'
-import '@primer/brand-fonts/fonts.css'
+import '@primer/react-brand/lib/css/main.css' // '../../../packages/react/src/css/stylesheets'
+// import '../../../packages/react/src/css/utilities.css' // already included by the previous line
 
 export const globalTypes = {
   colorMode: {

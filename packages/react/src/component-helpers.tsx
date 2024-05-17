@@ -1,5 +1,5 @@
 import React, {Ref, PropsWithChildren} from 'react'
-import {AnimateProps} from './_animation/AnimationProvider'
+import {AnimateProps} from '@primer/react-brand'
 
 /**
  * Layout
