@@ -170,7 +170,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 150px;
+    max-width: 600px;
     padding: 0;
     margin: 0 24px 0 0;
     /* overflow: hidden; */
@@ -179,19 +179,19 @@
 
 @media screen and (min-width: 768px) {
   .SubdomainNavBar-primary-nav-list {
-    max-width: 100px;
+    max-width: 400px;
   }
 }
 
 @media screen and (min-width: 850px) {
   .SubdomainNavBar-primary-nav-list {
-    max-width: 200px;
+    max-width: 500px;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .SubdomainNavBar-primary-nav-list {
-    max-width: 300px;
+    max-width: 600px;
   }
 }
 

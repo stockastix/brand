@@ -1,6 +1,6 @@
 import React, {useState, useCallback, useRef, PropsWithChildren, forwardRef, useMemo, useEffect} from 'react'
 import clsx from 'clsx'
-import {ChevronLeftIcon, MarkGithubIcon, SearchIcon, XIcon} from '@primer/octicons-react'
+import {HomeIcon, SearchIcon, XIcon} from '@primer/octicons-react'
 import {Button, FormControl, Text, TextInput, useWindowSize} from '@primer/react-brand'
 
 import {NavigationVisbilityObserver} from './NavigationVisbilityObserver'
@@ -73,7 +73,7 @@ function Root({
   className,
   fixed = true,
   fullWidth = false,
-  logoHref = 'https://github.com',
+  logoHref = '/',
   title,
   titleHref = '/',
   ...rest
@@ -180,27 +180,15 @@ function Root({
               <ol className={styles['SubdomainNavBar-title-area']}>
                 <li>
                   <a href={logoHref} aria-label="Github Home" className={styles['SubdomainNavBar-logo-mark']}>
-                    <span className={clsx(styles['SubdomainNavBar-back-arrow'])}>
-                      <ChevronLeftIcon fill="currentColor" size={24} />
-                    </span>
-                    <MarkGithubIcon fill="currentColor" size={24} />
+                    <HomeIcon fill="currentColor" size={24} />
                   </a>
                 </li>
                 {title && isSmall && (
-                  <>
-                    <li role="separator" className={styles['SubdomainNavBar-title-separator']} aria-hidden>
-                      /
-                    </li>
-                    <li>
-                      <a
-                        href={titleHref}
-                        aria-label={`${title} home`}
-                        className={clsx(styles['SubdomainNavBar-title'])}
-                      >
-                        {title}
-                      </a>
-                    </li>
-                  </>
+                  <li>
+                    <a href={titleHref} aria-label={`${title} home`} className={clsx(styles['SubdomainNavBar-title'])}>
+                      {title}
+                    </a>
+                  </li>
                 )}
               </ol>
             </nav>
